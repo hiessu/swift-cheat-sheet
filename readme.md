@@ -18,6 +18,7 @@ These are things that I lookup frequently or solutions I spent some time on. I h
 * Add a person to AddressBook
 * Use HexColors codes for UIColor
 * Setting and retrieving NSUserDefaults
+* Reading a .plist file
 * More to come
 
 Created by [@ZackShapiro](http://twitter.com/zackshapiro)

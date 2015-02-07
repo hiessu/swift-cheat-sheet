@@ -133,12 +133,12 @@ func textView(textView: UITextView!, shouldChangeTextInRange: NSRange, replaceme
 func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
     let newLength = countElements(textView.text!)  + countElements(text) - range.length
     let maxLength = 140
-    
+
      //return true only if the length is at most the maxLength
     if newLength <= maxLength {
         return true
     }
-    
+
     return false
 }
 
@@ -150,7 +150,7 @@ func addUserToAddressBook(firstName: String, lastName: String, jobTitle: String,
         let propertyType: NSNumber = kABMultiStringPropertyType
         return Unmanaged.fromOpaque(ABMultiValueCreateMutable(propertyType.unsignedIntValue).toOpaque()).takeUnretainedValue() as NSObject as ABMultiValueRef
     }
-    
+
     let stat = ABAddressBookGetAuthorizationStatus()
     switch stat {
     case .Denied, .Restricted:
@@ -167,36 +167,36 @@ func addUserToAddressBook(firstName: String, lastName: String, jobTitle: String,
             if granted {
                 var newContact:ABRecordRef! = ABPersonCreate().takeRetainedValue()
                 var success:Bool = false
-                
+
                 //Updated to work in Xcode 6.1
                 var error: Unmanaged<CFErrorRef>? = nil
                 //Updated to error to &error so the code builds in Xcode 6.1
                 success = ABRecordSetValue(newContact, kABPersonFirstNameProperty, firstName, &error)
                 success = ABRecordSetValue(newContact, kABPersonLastNameProperty, lastName, &error)
                 success = ABRecordSetValue(newContact, kABPersonJobTitleProperty, jobTitle, &error)
-                
+
                 if (phoneNumber != nil) {
                     let propertyType: NSNumber = kABMultiStringPropertyType
-                    
+
                     var phoneNumbers: ABMutableMultiValueRef =  createMultiStringRef()
                     var phone = ((phoneNumber as String).stringByReplacingOccurrencesOfString(" ", withString: "") as NSString)
-                    
+
                     ABMultiValueAddValueAndLabel(phoneNumbers, phone, kABPersonPhoneMainLabel, nil)
                     success = ABRecordSetValue(newContact, kABPersonPhoneProperty, phoneNumbers, &error)
-                    
-                    
+
+
                 }
-                
+
                 success = ABRecordSetValue(newContact, kABPersonNoteProperty, "added via iPhone App", &error)
                 success = ABAddressBookAddRecord(addressBook, newContact, &error)
                 success = ABAddressBookSave(addressBook, &error)
-                
+
             } else {
                 println(err)
             }
         }
     }
-    
+
 }
 
 // 14) Use hex color codes for UIColor
@@ -206,7 +206,7 @@ func addUserToAddressBook(firstName: String, lastName: String, jobTitle: String,
 
 
 extension UIColor {
-    
+
     class func fromRGB(rgb:UInt32) -> UIColor {
         return UIColor(
             red: CGFloat((rgb & 0xFF0000) >> 16) / 255.0,
@@ -215,7 +215,7 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
-    
+
 }
 
 // 15) NSUserDefaults, save and retrieve values (can store more types than just those shown in this example)
@@ -237,5 +237,15 @@ let int = NSUserDefaults.standardUserDefaults().integerForKey(intKey)
 let bool = NSUserDefaults.standardUserDefaults().boolForKey(boolKey)
 
 
-// more coming soon
+// Reading from a .plist file (keys.plist, in this example)
+var myDict: NSDictionary?
+if let path = NSBundle.mainBundle().pathForResource("keys", ofType: "plist") {
+    myDict = NSDictionary(contentsOfFile: path)
+}
 
+if let dict = myDict {
+    apiKey = dict["API_KEY"] as String
+}
+
+
+// more coming soon
