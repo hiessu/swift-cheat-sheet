@@ -244,7 +244,7 @@ if let path = NSBundle.mainBundle().pathForResource("keys", ofType: "plist") {
 }
 
 if let dict = myDict {
-    apiKey = dict["API_KEY"] as String
+    let apiKey = dict["API_KEY"] as String
 }
 
 
