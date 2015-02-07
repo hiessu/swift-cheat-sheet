@@ -22,5 +22,6 @@ These are things that I lookup frequently or solutions I spent some time on. I h
 * More to come
 
 Created by [@ZackShapiro](http://twitter.com/zackshapiro)
+Created by [@jasdev](http://twitter.com/jasdev)
 
 _(Feel free to fork this and edit, update, remix, or create your own. Feedback and pull requests are welcome)_
