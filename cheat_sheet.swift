@@ -134,7 +134,7 @@ func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, repl
     let newLength = countElements(textView.text!)  + countElements(text) - range.length
     let maxLength = 140
 
-     //return true only if the length is at most the maxLength
+    //return true only if the length is at most the maxLength
     if newLength <= maxLength {
         return true
     }
