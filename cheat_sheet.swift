@@ -134,7 +134,7 @@ func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, repl
     let newLength = countElements(textView.text!)  + countElements(text) - range.length
     let maxLength = 140
     
-     //return true only if the length is at most the maxLength
+    //return true only if the length is at most the maxLength
     if newLength <= maxLength {
         return true
     }
@@ -236,6 +236,32 @@ let object = NSUserDefaults.standardUserDefaults().objectForKey(objectKey) as St
 let int = NSUserDefaults.standardUserDefaults().integerForKey(intKey)
 let bool = NSUserDefaults.standardUserDefaults().boolForKey(boolKey)
 
+// 16) Create a NSAttributed String
+// Styling a String with things like lineHeight is a bit harder
+// than you might think.  For example: let's take a String and
+// use Avenir Light 28pt font with 6pt lineSpacing
 
-// more coming soon
+// set the properties
+let font = UIFont(name: "Avenir-Light", size: 28)
+let style = NSMutableParagraphStyle()
+style.lineSpacing = 6
 
+let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName: font!]
+
+// Replace Example text with the prefered text or string.
+var attributedString = NSAttributedString(string: "Example text", attributes:attributes)
+
+// 17) Make a Screenshot
+
+func makeScreenshot() -> UIImage {
+    UIGraphicsBeginImageContext(self.view.bounds.size)
+    
+    self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
+    var viewImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    
+    UIGraphicsEndImageContext()
+    
+    return viewImage
+}
+
+// more comming soon
