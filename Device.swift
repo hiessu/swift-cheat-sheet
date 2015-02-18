@@ -1,11 +1,3 @@
-//
-//  Device.swift
-//  imHome
-//
-//  Created by Kevin Xu on 2/9/15.
-//  Copyright (c) 2015 Alpha Labs, Inc. All rights reserved.
-//
-
 import Foundation
 
 // MARK: - Device Structure
