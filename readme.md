@@ -21,6 +21,7 @@ These are things that I lookup frequently or solutions I spent some time on. I h
 * Create a NSAttributedString  
 * Make a Screenshot
 * Reading a .plist file
+* [Device.swift](Device.swift) contains functions to check device, screen size, and iOS version
 * More to come
 
 Created and Curated by [@ZackShapiro](http://twitter.com/zackshapiro)
