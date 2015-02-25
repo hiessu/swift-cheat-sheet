@@ -28,5 +28,6 @@ Created and Curated by [@ZackShapiro](http://twitter.com/zackshapiro)
 Additions by:
 - [@SamuelBeek](http://twitter.com/samuelbeek)
 - [@jasdev](http://twitter.com/jasdev)
+- [@imkevinxu](https://twitter.com/imkevinxu)
 
 _(Feel free to fork this and edit, update, remix, or create your own. Feedback and pull requests are welcome)_
